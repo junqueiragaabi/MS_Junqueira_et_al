@@ -1,0 +1,25 @@
+library(ptsuite)
+library(plotly)
+
+set.seed(1234)
+d <- generate_pareto(100000, 1.2, 3)
+
+head(d)
+
+pareto_qq_test(d) #isso é uma distribuição Pareto
+
+set.seed(1234)
+exp_data <- rexp(100000, 5)
+pareto_qq_test(exp_data) #isso é uma distribuição exponencial
+
+
+pareto_test(d) #p > 0,05 é uma distribuição pareto
+
+#MLE - 
+teste_mle <- alpha_mle(d)
+
+#Hill estimator
+
+alpha_hills(d, 8000, FALSE)
+
+generate_all_estimates(d)
