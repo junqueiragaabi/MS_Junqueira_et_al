@@ -4,8 +4,6 @@ library(plotly)
 set.seed(1234)
 d <- generate_pareto(100000, 1.2, 3)
 
-head(d)
-
 pareto_qq_test(d) #isso é uma distribuição Pareto
 
 set.seed(1234)
