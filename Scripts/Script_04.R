@@ -6,32 +6,15 @@ diatom_total_hell <- labdsv::hellinger(diatom_comp_t)
 diatom_total_bray <- vegan::vegdist(diatom_total_hell, method = "bray")
 diatom_total_soren <- vegan::vegdist(diatom_total_hell, method = "bray", binary = TRUE)
 
-
-diatom_comp_c <- df_commum_ra %>%
-            select(-c(Block:Richness_R_Fuzzy_II))
-
-diatom_commum_hell <- labdsv::hellinger(diatom_comp_c)
-diatom_commum_bray <- vegan::vegdist(diatom_commum_hell, method = "bray")
-diatom_commum_soren <- vegan::vegdist(diatom_commum_hell, method = "bray", binary = TRUE)
-
-
-diatom_comp_r <- df_rare_ra %>%
-            select(-c(Block:Richness_R_Fuzzy_II))
-
-diatom_rare_hell <- labdsv::hellinger(diatom_comp_r)
-diatom_rare_bray <- vegan::vegdist(diatom_rare_hell, method = "bray")
-diatom_rare_soren <- vegan::vegdist(diatom_rare_hell, method = "bray", binary = TRUE)
-
-
 diatom_comp_c_fuzzy <- df_commum_f %>%
-              select(-c(Block:Richness_R_Fuzzy_II))
+              select(-c(Block:Replication))
 
 diatom_commum_hell_f <- labdsv::hellinger(diatom_comp_c_fuzzy)
 diatom_commum_bray_f <- vegan::vegdist(diatom_commum_hell_f, method = "bray")
 diatom_commum_soren_f<- vegan::vegdist(diatom_commum_hell_f, method = "bray", binary = TRUE)
 
 diatom_comp_r_fuzzy <- df_rare_f %>%
-              select(-c(Block:Richness_R_Fuzzy_II))
+              select(-c(Block:Replication))
 
 diatom_rare_hell_f <- labdsv::hellinger(diatom_comp_r_fuzzy)
 diatom_rare_bray_f <- vegan::vegdist(diatom_rare_hell_f, method = "bray")
