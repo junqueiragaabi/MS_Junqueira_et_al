@@ -1,4 +1,4 @@
-fig_S5_plot_a <- ggplot(df_axis_pcoa_rare,aes(x = pcoa_1_bray, y = pcoa_2_bray,
+fig_S5_plot_a <- ggplot(df_axis_pcoa_rare,aes(x = pcoa_1_soren, y = pcoa_2_soren,
         fill = Mesohabitat)) +
     geom_point(shape = 21, size = 3.7, alpha = 1) + 
     theme_bw() +
@@ -19,11 +19,11 @@ fig_S5_plot_a <- ggplot(df_axis_pcoa_rare,aes(x = pcoa_1_bray, y = pcoa_2_bray,
     coord_cartesian(xlim = c(-0.50, 0.50), ylim = c(-0.50, 0.50))
 
 fig_S5_plot_b <- ggplot() +
-    geom_point(data = df_pool_rare, aes(x = pcoa_1_bray, y = pcoa_2_bray), size = 3.7,
+    geom_point(data = df_pool_rare, aes(x = pcoa_1_soren, y = pcoa_2_soren), size = 3.7,
         shape = 21, fill = "#ececec") + 
-    geom_point(data = df_riffle_rare,aes(x = pcoa_1_bray, y = pcoa_2_bray,
+    geom_point(data = df_riffle_rare,aes(x = pcoa_1_soren, y = pcoa_2_soren,
         fill = Grazer), size = 3.7, shape = 21) +
-    ggforce::geom_shape(data = df_hull_riffle_grazer_br, aes(x = pcoa_1_bray, y = pcoa_2_bray,
+    ggforce::geom_shape(data = df_hull_riffle_grazer_sr, aes(x = pcoa_1_soren, y = pcoa_2_soren,
     fill = Grazer, color = Grazer), radius = 0.03, expand = 0.028, alpha = 0.2) +
     scale_fill_manual(values = c("#b44739", "#4c9095"), guide = "none") +
     scale_color_manual(values = c("#b44739", "#4c9095"), guide = "none") +
@@ -42,11 +42,11 @@ fig_S5_plot_b <- ggplot() +
     coord_cartesian(xlim = c(-0.50, 0.50), ylim = c(-0.50, 0.50))
 
 fig_S5_plot_c <- ggplot() +
-    geom_point(data = df_riffle_rare, aes(x = pcoa_1_bray, y = pcoa_2_bray), size = 3.7,
+    geom_point(data = df_riffle_rare, aes(x = pcoa_1_soren, y = pcoa_2_soren), size = 3.7,
         shape = 21, fill = "#ececec") + 
-    geom_point(data = df_pool_rare,aes(x = pcoa_1_bray, y = pcoa_2_bray,
+    geom_point(data = df_pool_rare,aes(x = pcoa_1_soren, y = pcoa_2_soren,
         fill = Grazer), size = 3.7, shape = 21) +
-    ggforce::geom_shape(data = df_hull_pool_grazer_br, aes(x = pcoa_1_bray, y = pcoa_2_bray,
+    ggforce::geom_shape(data = df_hull_pool_grazer_sr, aes(x = pcoa_1_soren, y = pcoa_2_soren,
     fill = Grazer, color = Grazer), radius = 0.03, expand = 0.028, alpha = 0.2) +
     scale_fill_manual(values = c("#b44739", "#4c9095")) +
     scale_color_manual(values = c("#b44739", "#4c9095")) +
@@ -65,14 +65,16 @@ fig_S5_plot_c <- ggplot() +
     coord_cartesian(xlim = c(-0.50, 0.50), ylim = c(-0.50, 0.50))
 
 fig_S5_plot_d <- ggplot() +
-    geom_point(data = df_pool_rare, aes(x = pcoa_1_bray, y = pcoa_2_bray), size = 3.7,
+    geom_point(data = df_pool_rare, aes(x = pcoa_1_soren, y = pcoa_2_soren), size = 3.7,
         shape = 21, fill = "#ececec") + 
-    geom_point(data = df_riffle_rare,aes(x = pcoa_1_bray, y = pcoa_2_bray,
+    geom_point(data = df_riffle_rare,aes(x = pcoa_1_soren, y = pcoa_2_soren,
         fill = Substrate), size = 3.7, shape = 21) +
-    ggforce::geom_shape(data = df_hull_riffle_substrate_br, aes(x = pcoa_1_bray, y = pcoa_2_bray,
+    ggforce::geom_shape(data = df_hull_riffle_substrate_sr, aes(x = pcoa_1_soren, y = pcoa_2_soren,
     fill = Substrate, color = Substrate), radius = 0.03, expand = 0.028, alpha = 0.2) +
-    scale_fill_manual(values = c("#1e8516", "#E9A264"), guide = "none") +
-    scale_color_manual(values = c("#1e8516", "#E9A264"), guide = "none") +
+    scale_fill_manual(name = "Substratum",
+            values = c("#1e8516", "#E9A264"), guide = "none") +
+    scale_color_manual(name = "Substratum",
+            values = c("#1e8516", "#E9A264"), guide = "none") +
     scale_x_continuous(breaks = c(-0.50, -0.25, 0.00, 0.25, 0.50)) +
     scale_y_continuous(breaks = c(-0.50, -0.25, 0.00, 0.25, 0.50)) +
     annotate("text", x = -0.48, y = 0.47, label = "(d)", family = "Open Sans",
@@ -89,14 +91,16 @@ fig_S5_plot_d <- ggplot() +
 
 
 fig_S5_plot_e <- ggplot() +
-    geom_point(data = df_riffle_rare, aes(x = pcoa_1_bray, y = pcoa_2_bray), size = 3.7,
+    geom_point(data = df_riffle_rare, aes(x = pcoa_1_soren, y = pcoa_2_soren), size = 3.7,
         shape = 21, fill = "#ececec") + 
-    geom_point(data = df_pool_rare,aes(x = pcoa_1_bray, y = pcoa_2_bray,
+    geom_point(data = df_pool_rare,aes(x = pcoa_1_soren, y = pcoa_2_soren,
         fill = Substrate), size = 3.7, shape = 21) +
-    ggforce::geom_shape(data = df_hull_pool_substrate_br, aes(x = pcoa_1_bray, y = pcoa_2_bray,
+    ggforce::geom_shape(data = df_hull_pool_substrate_sr, aes(x = pcoa_1_soren, y = pcoa_2_soren,
     fill = Substrate, color = Substrate), radius = 0.03, expand = 0.028, alpha = 0.2) +
-    scale_fill_manual(values = c("#1e8516", "#E9A264")) +
-    scale_color_manual(values = c("#1e8516", "#E9A264")) +
+    scale_fill_manual(name = "Substratum",
+            values = c("#1e8516", "#E9A264")) +
+    scale_color_manual(name = "Substratum",
+            values = c("#1e8516", "#E9A264")) +
     scale_x_continuous(breaks = c(-0.50, -0.25, 0.00, 0.25, 0.50)) +
     scale_y_continuous(breaks = c(-0.50, -0.25, 0.00, 0.25, 0.50)) +
     annotate("text", x = -0.48, y = 0.47, label = "(e)", family = "Open Sans",
@@ -121,4 +125,5 @@ fig_S5_plot_substrate <- fig_S5_plot_d + fig_S5_plot_e
 
 fig_S5_plot_a / fig_S5_plot_grazer / fig_S5_plot_substrate
 
-ggsave("Figura_S5.png", width = 7.08, height = 8.75, units = "in", dpi = 1000)
+ggsave(here::here("Output","Figure_S5.png"),
+    width = 7.08, height = 8.75, units = "in", dpi =1000)

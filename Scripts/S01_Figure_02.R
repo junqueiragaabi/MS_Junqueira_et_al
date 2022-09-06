@@ -22,6 +22,7 @@ plot_richness_total <- ggplot(df_plot,aes(x = Mesohabitat, y = Richness_T_mean, 
     theme_test() +
     annotate("text", x = 0.6, y = 34, label = "(a)", fontface = "bold", size = 7, , family = "Lato") +
     scale_color_manual(values = c("#b44739", "#4c9095"))+
+    scale_linetype_discrete(name ="Substratum")+
     scale_y_continuous(limits = c(0, 35)) +
     scale_x_discrete(limits = c("Riffle", "Pool")) +
      theme(axis.text.x = element_text(size = 20, family = "Lato"),
@@ -50,6 +51,7 @@ plot_richness_common <- ggplot(df_plot,aes(x = Mesohabitat, y = Richness_C_Fuzzy
     annotate("text", x = 0.6, y = 24, label = "(b)", fontface = "bold", size = 7, , family = "Lato") +
     scale_color_manual(values = c("#b44739", "#4c9095"))+
     scale_y_continuous(limits = c(0, 25)) +
+    scale_linetype_discrete(name ="Substratum") +
     scale_x_discrete(limits = c("Riffle", "Pool")) +
      theme(axis.text.x = element_text(size = 20, family = "Lato"),
           axis.text.y = element_text(size = 16, family = "Lato"),
@@ -76,6 +78,7 @@ plot_richness_rare <- ggplot(df_plot,aes(x = Mesohabitat, y = Richness_R_Fuzzy_I
     theme_test() +
     annotate("text", x = 0.6, y = 14, label = "(c)", fontface = "bold", size = 7, , family = "Lato") +
     scale_color_manual(values = c("#b44739", "#4c9095"))+
+    scale_linetype_discrete(name ="Substratum")+
     scale_y_continuous(limits = c(0, 15)) +
     scale_x_discrete(limits = c("Riffle", "Pool")) +
     theme(axis.text.x = element_text(size = 20, family = "Lato"),
@@ -94,4 +97,4 @@ plot_richness_total + plot_richness_common + plot_richness_rare +
     plot_layout(guides = "collect") & theme(legend.position = "bottom")
 
 ggsave(here::here("Output","Figure_2.png"),
-    height = 6, width =15,units="in",dpi=600)
+    height = 6, width =15,units="in",dpi=1000)

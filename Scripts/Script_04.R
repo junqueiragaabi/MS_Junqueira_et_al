@@ -25,18 +25,18 @@ diatom_rare_soren_f<- vegan::vegdist(diatom_rare_hell_f, method = "bray", binary
 
 commom_fuzzy_II <- df_commum_f %>%
             select(-c(HUCO:EINT)) %>%
-            select(-c(Block:Richness_R_Fuzzy_II))
+            select(-c(Block:Replication))
 
 diatom_commum_hell_f_II <- labdsv::hellinger(commom_fuzzy_II)
 diatom_commum_bray_f_II <- vegan::vegdist(diatom_commum_hell_f_II, method = "bray")
 diatom_commum_soren_f_II<- vegan::vegdist(diatom_commum_hell_f_II, method = "bray", binary = TRUE)
 
 sp_5 <- df_commum_f %>%
-        select(HUCO:EINT)
+        select(PSUB_2:GPSE)
 
 
 rare_fuzzy_II <- cbind(df_rare_f, sp_5) %>%
-          select(-c(Block:Richness_R_Fuzzy_II))
+          select(-c(Block:Replication))
 
 diatom_rare_hell_f_II <- labdsv::hellinger(rare_fuzzy_II)
 diatom_rare_bray_f_II <- vegan::vegdist(diatom_rare_hell_f_II, method = "bray")

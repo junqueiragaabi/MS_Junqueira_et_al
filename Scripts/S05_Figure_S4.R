@@ -71,8 +71,10 @@ fig_S4_plot_d <- ggplot() +
         fill = Substrate), size = 3.7, shape = 21) +
     ggforce::geom_shape(data = df_hull_riffle_substrate_bc, aes(x = pcoa_1_bray, y = pcoa_2_bray,
     fill = Substrate, color = Substrate), radius = 0.03, expand = 0.028, alpha = 0.2) +
-    scale_fill_manual(values = c("#1e8516", "#E9A264"), guide = "none") +
-    scale_color_manual(values = c("#1e8516", "#E9A264"), guide = "none") +
+    scale_fill_manual(name = "Substratum",
+            values = c("#1e8516", "#E9A264"), guide = "none") +
+    scale_color_manual(name = "Substratum",
+            values = c("#1e8516", "#E9A264"), guide = "none") +
     scale_x_continuous(breaks = c(-0.41, -0.21, 0.00, 0.21, 0.41)) +
     scale_y_continuous(breaks = c(-0.41, -0.21, 0.00, 0.21, 0.41)) +
     annotate("text", x = -0.38, y = 0.37, label = "(d)", family = "Open Sans",
@@ -95,8 +97,10 @@ fig_S4_plot_e <- ggplot() +
         fill = Substrate), size = 3.7, shape = 21) +
     ggforce::geom_shape(data = df_hull_pool_substrate_bc, aes(x = pcoa_1_bray, y = pcoa_2_bray,
     fill = Substrate, color = Substrate), radius = 0.03, expand = 0.028, alpha = 0.2) +
-    scale_fill_manual(values = c("#1e8516", "#E9A264")) +
-    scale_color_manual(values = c("#1e8516", "#E9A264")) +
+    scale_fill_manual(name = "Substratum",
+            values = c("#1e8516", "#E9A264")) +
+    scale_color_manual(name = "Substratum",
+            values = c("#1e8516", "#E9A264")) +
     scale_x_continuous(breaks = c(-0.41, -0.21, 0.00, 0.21, 0.41)) +
     scale_y_continuous(breaks = c(-0.41, -0.21, 0.00, 0.21, 0.41)) +
     annotate("text", x = -0.38, y = 0.37, label = "(e)", family = "Open Sans",
@@ -121,4 +125,5 @@ fig_S4_plot_substrate <- fig_S4_plot_d + fig_S4_plot_e
 
 fig_S4_plot_a / fig_S4_plot_grazer / fig_S4_plot_substrate
 
-ggsave("Figura_S4.png", width = 7.08, height = 8.75, units = "in", dpi = 1000)
+ggsave(here::here("Output","Figure_S4.png"),
+    width = 7.08, height = 8.75, units = "in", dpi =1000)

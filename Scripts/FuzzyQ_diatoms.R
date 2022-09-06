@@ -19,7 +19,14 @@ BS.FQdiatom <- fuzzyqCI(BS.FQdiatom, fq = FQdiatom, method= "bca")
 BS.FQdiatom <- sortClus(BS.FQdiatom, FQdiatom)
 
 col.RC <- c("brown2", "turquoise3")
+
+png(here::here("Output","Figure_S1.png"),
+    width = 7.08, height = 7.08,
+    units = "in", res = 1200)
+
 AOplot(FQdiatom, col.RC, pch = 16)
+
+dev.off()
 
 spp <- FQdiatom$spp
 
@@ -28,6 +35,10 @@ barplot(spp[,2], names.arg = rownames(spp),
         las = 2, cex.names = 0.6, xlab = "Species", ylab = "Silhouette width",
         cex.axis = 0.8)
 legend(0, -0.1, c("Rare", "Common"), col = col.RC, pch = 15, cex = 0.8)
+
+png(here::here("Output","Figure_S2.png"),
+    width = 7.08, height = 7.08,
+    units = "in", res = 1200)
 
 plot(spp[, 3], cex.axis = 0.8, xaxt = 'n', ylab = "Commoness index",
      ylim = c(0, max(BS.FQdiatom)), xlab = "Species", col = col.RC[spp[, 1] + 1], # nolint
@@ -38,6 +49,5 @@ arrows(ebar_int, BS.FQdiatom["Lower", ], ebar_int, BS.FQdiatom["Upper", ],
 abline(h = 0.5, col="orange3", xpd = FALSE)
 axis(1, at = ebar_int, labels = rownames(spp), las = 2, cex.axis = 0.6)
 
+dev.off()
 
-
-write_csv(especies, "common_sp.csv")
