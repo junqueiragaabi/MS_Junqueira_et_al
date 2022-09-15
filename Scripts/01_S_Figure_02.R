@@ -1,11 +1,15 @@
+## Script for Figure 2 - Anova results
+## for total community, common and rare
+
+##Preparing data set--------------------
 
 G_S <- c("AR","AS","PR","PS","AR","AS","PR","PS")
 
 df_plot <- df_richness %>%
-    select(Block:Richness_R_Fuzzy_II) %>%
-    group_by(Mesohabitat, Grazer, Substrate) %>%
-    summarise_at(vars(Richness_T:Richness_R_Fuzzy_II), funs(mean, sd), na.rm = TRUE) %>%
-    ungroup()
+    dplyr::select(Block:Richness_R_Fuzzy_II) %>%
+    dplyr::group_by(Mesohabitat, Grazer, Substrate) %>%
+    dplyr::summarise_at(vars(Richness_T:Richness_R_Fuzzy_II), funs(mean, sd), na.rm = TRUE) %>%
+    dplyr::ungroup()
     
 View(df_plot)
 
@@ -94,7 +98,8 @@ plot_richness_rare <- ggplot(df_plot,aes(x = Mesohabitat, y = Richness_R_Fuzzy_I
     guides(colour = guide_legend(order = 1), linetype = guide_legend(order = 2))
 
 plot_richness_total + plot_richness_common + plot_richness_rare + 
-    plot_layout(guides = "collect") & theme(legend.position = "bottom")
+    patchwork::plot_layout(guides = "collect") & ggplot::theme(legend.position = "bottom")
 
-ggsave(here::here("Output","Figure_2.png"),
+ggplot::ggsave(here::here("Output","Figure_2.png"),
     height = 6, width =15,units="in",dpi=1000)
+

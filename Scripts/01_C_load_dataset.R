@@ -14,12 +14,14 @@ library(ggtext)
 df_richness <- read.csv(here::here("Data", "Data_diatoms_composition.csv"),
     header = TRUE, sep = ";", dec = ",")
 
+df_diatom <- read.csv(here::here("Data", "Data_diatoms_composition.csv"),
+    header = TRUE, sep = ";", dec = ",")
+
 df_commum_f <- read.csv(here::here("Data", "Data_diatoms_fuzzyq_common.csv"),
     header = TRUE, sep = ";", dec = ",")
 
 df_rare_f <- read.csv(here::here("Data", "Data_diatoms_fuzzyq_rare.csv"),
     header = TRUE, sep = ";", dec = ",")
-
 
 df_five_common <- read.csv(here::here("Data", "Data_diatoms_waffle_plot.csv"),
     header = TRUE, sep = ";", dec = ",")

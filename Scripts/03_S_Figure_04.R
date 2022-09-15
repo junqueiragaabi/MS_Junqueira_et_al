@@ -1,4 +1,8 @@
-plot_a <- ggplot(df_axis_pcoa_total,aes(x = pcoa_1_soren, y = pcoa_2_soren,
+## Script for Figure 4 - PCoA
+## for total community
+## Bray-Curtis - abundance data
+
+fig_04_plot_a <- ggplot(df_axis_pcoa_total,aes(x = pcoa_1_bray, y = pcoa_2_bray,
         fill = Mesohabitat)) +
     geom_point(shape = 21, size = 3.7, alpha = 1) + 
     theme_bw() +
@@ -18,14 +22,12 @@ plot_a <- ggplot(df_axis_pcoa_total,aes(x = pcoa_1_soren, y = pcoa_2_soren,
           axis.text.y = element_text(size = 10, family = "Open Sans", angle = 90, hjust = .50)) +
     coord_cartesian(xlim = c(-0.41, 0.41), ylim = c(-0.41, 0.41))
 
-
-#plotb
-plot_b <- ggplot() +
-    geom_point(data = df_pool_total, aes(x = pcoa_1_soren, y = pcoa_2_soren), size = 3.7,
+fig_04_plot_b <- ggplot() +
+    geom_point(data = df_pool_total, aes(x = pcoa_1_bray, y = pcoa_2_bray), size = 3.7,
         shape = 21, fill = "#ececec") + 
-    geom_point(data = df_riffle_total,aes(x = pcoa_1_soren, y = pcoa_2_soren,
+    geom_point(data = df_riffle_total,aes(x = pcoa_1_bray, y = pcoa_2_bray,
         fill = Grazer), size = 3.7, shape = 21) +
-    ggforce::geom_shape(data = df_hull_riffle_grazer_st, aes(x = pcoa_1_soren, y = pcoa_2_soren,
+    ggforce::geom_shape(data = df_hull_riffle_grazer_bt, aes(x = pcoa_1_bray, y = pcoa_2_bray,
     fill = Grazer, color = Grazer), radius = 0.03, expand = 0.028, alpha = 0.2) +
     scale_fill_manual(values = c("#b44739", "#4c9095"), guide = "none") +
     scale_color_manual(values = c("#b44739", "#4c9095"), guide = "none") +
@@ -43,13 +45,12 @@ plot_b <- ggplot() +
           axis.text.y = element_text(size = 10, family = "Open Sans", angle = 90, hjust = .50))+
     coord_cartesian(xlim = c(-0.41, 0.41), ylim = c(-0.41, 0.41))
 
-#plotc
-plot_c <- ggplot() +
-    geom_point(data = df_riffle_total, aes(x = pcoa_1_soren, y = pcoa_2_soren), size = 3.7,
+fig_04_plot_c <- ggplot() +
+    geom_point(data = df_riffle_total, aes(x = pcoa_1_bray, y = pcoa_2_bray), size = 3.7,
         shape = 21, fill = "#ececec") + 
-    geom_point(data = df_pool_total,aes(x = pcoa_1_soren, y = pcoa_2_soren,
+    geom_point(data = df_pool_total,aes(x = pcoa_1_bray, y = pcoa_2_bray,
         fill = Grazer), size = 3.7, shape = 21) +
-    ggforce::geom_shape(data = df_hull_pool_grazer_st, aes(x = pcoa_1_soren, y = pcoa_2_soren,
+    ggforce::geom_shape(data = df_hull_pool_grazer_bt, aes(x = pcoa_1_bray, y = pcoa_2_bray,
     fill = Grazer, color = Grazer), radius = 0.03, expand = 0.028, alpha = 0.2) +
     scale_fill_manual(values = c("#b44739", "#4c9095")) +
     scale_color_manual(values = c("#b44739", "#4c9095")) +
@@ -67,14 +68,12 @@ plot_c <- ggplot() +
           legend.text = element_text(size = 10, family = "Open Sans"))+
     coord_cartesian(xlim = c(-0.41, 0.41), ylim = c(-0.41, 0.41))
 
-
-#plot_d
-plot_d <- ggplot() +
-    geom_point(data = df_pool_total, aes(x = pcoa_1_soren, y = pcoa_2_soren), size = 3.7,
+fig_04_plot_d <- ggplot() +
+    geom_point(data = df_pool_total, aes(x = pcoa_1_bray, y = pcoa_2_bray), size = 3.7,
         shape = 21, fill = "#ececec") + 
-    geom_point(data = df_riffle_total,aes(x = pcoa_1_soren, y = pcoa_2_soren,
+    geom_point(data = df_riffle_total,aes(x = pcoa_1_bray, y = pcoa_2_bray,
         fill = Substrate), size = 3.7, shape = 21) +
-    ggforce::geom_shape(data = df_hull_riffle_substrate_st, aes(x = pcoa_1_soren, y = pcoa_2_soren,
+    ggforce::geom_shape(data = df_hull_riffle_substrate_bt, aes(x = pcoa_1_bray, y = pcoa_2_bray,
     fill = Substrate, color = Substrate), radius = 0.03, expand = 0.028, alpha = 0.2) +
     scale_fill_manual(name = "Substratum",
             values = c("#1e8516", "#E9A264"), guide = "none") +
@@ -93,13 +92,13 @@ plot_d <- ggplot() +
           axis.text.x = element_text(size = 10, family = "Open Sans"),
           axis.text.y = element_text(size = 10, family = "Open Sans", angle = 90, hjust = .50)) +
     coord_cartesian(xlim = c(-0.41, 0.41), ylim = c(-0.41, 0.41))
-#plote
-plot_e <- ggplot() +
-    geom_point(data = df_riffle_total, aes(x = pcoa_1_soren, y = pcoa_2_soren), size = 3.7,
+
+fig_04_plot_e <- ggplot() +
+    geom_point(data = df_riffle_total, aes(x = pcoa_1_bray, y = pcoa_2_bray), size = 3.7,
         shape = 21, fill = "#ececec") + 
-    geom_point(data = df_pool_total,aes(x = pcoa_1_soren, y = pcoa_2_soren,
+    geom_point(data = df_pool_total,aes(x = pcoa_1_bray, y = pcoa_2_bray,
         fill = Substrate), size = 3.7, shape = 21) +
-    ggforce::geom_shape(data = df_hull_pool_substrate_st, aes(x = pcoa_1_soren, y = pcoa_2_soren,
+    ggforce::geom_shape(data = df_hull_pool_substrate_bt, aes(x = pcoa_1_bray, y = pcoa_2_bray,
     fill = Substrate, color = Substrate), radius = 0.03, expand = 0.028, alpha = 0.2) +
     scale_fill_manual(name = "Substratum",
             values = c("#1e8516", "#E9A264")) +
@@ -122,13 +121,14 @@ plot_e <- ggplot() +
           legend.text = element_text(size = 10, family = "Open Sans")) +
     coord_cartesian(xlim = c(-0.41, 0.41), ylim = c(-0.41, 0.41))
 
-plot_grazer <- plot_b + plot_c
 
-plot_substrate <- plot_d + plot_e
+fig_04_plot_grazer <- fig_04_plot_b + fig_04_plot_c
 
-plot_a / plot_grazer / plot_substrate
+fig_04_plot_substrate <- fig_04_plot_d + fig_04_plot_e
 
+fig_04_plot_a /fig_04_plot_grazer / fig_04_plot_substrate
 
-ggsave(here::here("Output","Figure_3.png"),
+ggplot::ggsave(here::here("Output","Figure_4.png"),
     width = 7.08, height = 8.75, units = "in", dpi =1000)
 
+## The end of the script##
