@@ -134,7 +134,7 @@ plot_substrate <- plot_d + plot_e
 plot_a / plot_grazer / plot_substrate
 
 
-ggplot::ggsave(here::here("Output","Figure_3.png"),
+ggplot2::ggsave(here::here("Output","Figure_3.png"),
     width = 7.08, height = 8.75, units = "in", dpi =1000)
 
 ## The end of the script##

@@ -129,7 +129,7 @@ fig_S3_plot_substrate <- fig_S3_plot_d + fig_S3_plot_e
 
 fig_S3_plot_a / fig_S3_plot_grazer / fig_S3_plot_substrate
 
-ggplot::ggsave(here::here("Output","Figure_S3.png"),
+ggplot2::ggsave(here::here("Output","Figure_S3.png"),
     width = 7.08, height = 8.75, units = "in", dpi =1000)
 
 ## The end of the script##

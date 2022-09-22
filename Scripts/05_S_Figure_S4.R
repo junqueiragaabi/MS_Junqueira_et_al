@@ -129,7 +129,7 @@ fig_S4_plot_substrate <- fig_S4_plot_d + fig_S4_plot_e
 
 fig_S4_plot_a / fig_S4_plot_grazer / fig_S4_plot_substrate
 
-ggplot::ggsave(here::here("Output","Figure_S4.png"),
+ggplot2::ggsave(here::here("Output","Figure_S4.png"),
     width = 7.08, height = 8.75, units = "in", dpi =1000)
 
 ## The end of the script##
