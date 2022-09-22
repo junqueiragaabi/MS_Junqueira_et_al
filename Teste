@@ -1,23 +1,169 @@
-library(ptsuite)
-library(plotly)
+df_axis_pcoa_rare
 
-set.seed(1234)
-d <- generate_pareto(100000, 1.2, 3)
-
-pareto_qq_test(d) #isso é uma distribuição Pareto
-
-set.seed(1234)
-exp_data <- rexp(100000, 5)
-pareto_qq_test(exp_data) #isso é uma distribuição exponencial
+df_hull_riffle_grazer_sr <- df_axis_pcoa_rare %>%
+    dplyr::group_by(M_G_S) %>%
+    dplyr::slice(c(chull(pcoa_1_soren, pcoa_2_soren),
+            chull(pcoa_1_soren, pcoa_2_soren)[1]))
 
 
-pareto_test(d) #p > 0,05 é uma distribuição pareto
+df_hull_riffle_grazer_a <- df_axis_pcoa_rare %>%
+    dplyr::group_by(M_G_S) %>%
+    dplyr::slice(c(chull(pcoa_1_soren, pcoa_2_soren),
+            chull(pcoa_1_soren, pcoa_2_soren)[1]))
 
-#MLE - 
-teste_mle <- alpha_mle(d)
 
-#Hill estimator
 
-alpha_hills(d, 8000, FALSE)
+ggplot() +
+    geom_point(data = df_axis_pcoa_rare, aes(x = pcoa_1_bray, y = pcoa_2_bray), size = 3.7,
+        shape = 21, fill = "#ececec") + 
+    geom_point(data = df_axis_pcoa_rare,aes(x = pcoa_1_bray, y = pcoa_2_bray,
+        fill = M_G_S), size = 3.7, shape = 21) +
+    ggforce::geom_shape(data = df_hull_riffle_grazer_sr, aes(x = pcoa_1_bray, y = pcoa_2_bray,
+    fill = M_G_S, color = M_G_S), radius = 0.03, expand = 0.028, alpha = 0.2) +
+    theme_bw() +
+    xlab("") +
+    ylab("PCoA2") +
+    theme(axis.title = element_text(color = "black", size = 12, family = "Open Sans"),
+          axis.text.x = element_text(size = 10, family = "Open Sans"),
+          axis.text.y = element_text(size = 10, family = "Open Sans", angle = 90, hjust = .50))+
+    coord_cartesian(xlim = c(-0.50, 0.50), ylim = c(-0.50, 0.50))
 
-generate_all_estimates(d)
+
+df_hull_riffle_substrate_br <- df_axis_pcoa_rare %>%
+    dplyr::filter(Mesohabitat == "Riffle") %>%
+    dplyr::filter(Grazer == "Absence") %>%
+    dplyr::group_by(Substrate) %>%
+    dplyr::slice(c(chull(pcoa_1_bray, pcoa_2_bray),
+            chull(pcoa_1_bray, pcoa_2_bray)[1]))
+
+d <- ggplot() +
+    geom_point(data = df_pool_rare, aes(x = pcoa_1_bray, y = pcoa_2_bray), size = 3.7,
+        shape = 21, fill = "#ececec") + 
+    geom_point(data = df_riffle_rare,aes(x = pcoa_1_bray, y = pcoa_2_bray,
+        fill = Substrate), size = 3.7, shape = 21) +
+    ggforce::geom_shape(data = df_hull_riffle_substrate_br, aes(x = pcoa_1_bray, y = pcoa_2_bray,
+    fill = Substrate, color = Substrate), radius = 0.03, expand = 0.028, alpha = 0.2) +
+    scale_fill_manual(name = "Substratum",
+            values = c("#1e8516", "#E9A264"), guide = "none") +
+    scale_color_manual(name = "Substratum",
+            values = c("#1e8516", "#E9A264"), guide = "none") +
+    scale_x_continuous(breaks = c(-0.50, -0.25, 0.00, 0.25, 0.50)) +
+    scale_y_continuous(breaks = c(-0.50, -0.25, 0.00, 0.25, 0.50)) +
+    annotate("text", x = -0.48, y = 0.47, label = "(d)", family = "Open Sans",
+            fontface = "bold", size = 4) +
+    annotate("text", x = 0.25, y = 0.47, label = "Grazer Absence", family = "Open Sans",
+             size = 4, color = "black") +
+    theme_bw() +
+    xlab("PCoA2") +
+    ylab("PCoA2") +
+    theme(axis.title = element_text(color = "black", size = 12, family = "Open Sans"),
+          axis.text.x = element_text(size = 10, family = "Open Sans"),
+          axis.text.y = element_text(size = 10, family = "Open Sans", angle = 90, hjust = .50)) +
+    coord_cartesian(xlim = c(-0.50, 0.50), ylim = c(-0.50, 0.50))
+
+df_hull_riffle_substrate_br_b <- df_axis_pcoa_rare %>%
+    dplyr::filter(Mesohabitat == "Riffle") %>%
+    dplyr::filter(Grazer == "Presence") %>%
+    dplyr::group_by(Substrate) %>%
+    dplyr::slice(c(chull(pcoa_1_bray, pcoa_2_bray),
+            chull(pcoa_1_bray, pcoa_2_bray)[1]))
+
+f <- ggplot() +
+    geom_point(data = df_pool_rare, aes(x = pcoa_1_bray, y = pcoa_2_bray), size = 3.7,
+        shape = 21, fill = "#ececec") + 
+    geom_point(data = df_riffle_rare,aes(x = pcoa_1_bray, y = pcoa_2_bray,
+        fill = Substrate), size = 3.7, shape = 21) +
+    ggforce::geom_shape(data = df_hull_riffle_substrate_br_b, aes(x = pcoa_1_bray, y = pcoa_2_bray,
+    fill = Substrate, color = Substrate), radius = 0.03, expand = 0.028, alpha = 0.2) +
+    scale_fill_manual(name = "Substratum",
+            values = c("#1e8516", "#E9A264"), guide = "none") +
+    scale_color_manual(name = "Substratum",
+            values = c("#1e8516", "#E9A264"), guide = "none") +
+    scale_x_continuous(breaks = c(-0.50, -0.25, 0.00, 0.25, 0.50)) +
+    scale_y_continuous(breaks = c(-0.50, -0.25, 0.00, 0.25, 0.50)) +
+    annotate("text", x = -0.48, y = 0.47, label = "(f)", family = "Open Sans",
+            fontface = "bold", size = 4) +
+    annotate("text", x = 0.25, y = 0.47, label = "Grazer Presence", family = "Open Sans",
+             size = 4, color = "black") +
+    theme_bw() +
+    xlab("PCoA2") +
+    ylab("PCoA2") +
+    theme(axis.title = element_text(color = "black", size = 12, family = "Open Sans"),
+          axis.text.x = element_text(size = 10, family = "Open Sans"),
+          axis.text.y = element_text(size = 10, family = "Open Sans", angle = 90, hjust = .50)) +
+    coord_cartesian(xlim = c(-0.50, 0.50), ylim = c(-0.50, 0.50))
+
+
+d + f
+
+df_hull_riffle_substrate_e <- df_axis_pcoa_rare %>%
+    dplyr::filter(Mesohabitat == "Pool") %>%
+    dplyr::filter(Grazer == "Absence") %>%
+    dplyr::group_by(Substrate) %>%
+    dplyr::slice(c(chull(pcoa_1_bray, pcoa_2_bray),
+            chull(pcoa_1_bray, pcoa_2_bray)[1]))
+
+e <- ggplot() +
+    geom_point(data = df_riffle_rare, aes(x = pcoa_1_bray, y = pcoa_2_bray), size = 3.7,
+        shape = 21, fill = "#ececec") + 
+    geom_point(data = df_pool_rare,aes(x = pcoa_1_bray, y = pcoa_2_bray,
+        fill = Substrate), size = 3.7, shape = 21) +
+    ggforce::geom_shape(data = df_hull_riffle_substrate_d, aes(x = pcoa_1_bray, y = pcoa_2_bray,
+    fill = Substrate, color = Substrate), radius = 0.03, expand = 0.028, alpha = 0.2) +
+    scale_fill_manual(name = "Substratum",
+            values = c("#1e8516", "#E9A264")) +
+    scale_color_manual(name = "Substratum",
+            values = c("#1e8516", "#E9A264")) +
+    scale_x_continuous(breaks = c(-0.50, -0.25, 0.00, 0.25, 0.50)) +
+    scale_y_continuous(breaks = c(-0.50, -0.25, 0.00, 0.25, 0.50)) +
+    annotate("text", x = -0.48, y = 0.47, label = "(e)", family = "Open Sans",
+            fontface = "bold", size = 4) +
+    annotate("text", x = 0.25, y = 0.47, label = "Grazer Absence", family = "Open Sans",
+             size = 4, color = "black") +
+    theme_bw() +
+    xlab("PCoA2") +
+    ylab("PCoA2") +
+    theme(axis.title = element_text(color = "black", size = 12, family = "Open Sans"),
+          axis.text.x = element_text(size = 10, family = "Open Sans"),
+          axis.text.y = element_text(size = 10, family = "Open Sans", angle = 90, hjust = .50)) +
+    coord_cartesian(xlim = c(-0.50, 0.50), ylim = c(-0.50, 0.50))
+
+
+
+df_hull_riffle_substrater_g <- df_axis_pcoa_rare %>%
+    dplyr::filter(Mesohabitat == "Pool") %>%
+    dplyr::filter(Grazer == "Presence") %>%
+    dplyr::group_by(Substrate) %>%
+    dplyr::slice(c(chull(pcoa_1_bray, pcoa_2_bray),
+            chull(pcoa_1_bray, pcoa_2_bray)[1]))
+
+g <- ggplot() +
+    geom_point(data = df_riffle_rare, aes(x = pcoa_1_bray, y = pcoa_2_bray), size = 3.7,
+        shape = 21, fill = "#ececec") + 
+    geom_point(data = df_pool_rare,aes(x = pcoa_1_bray, y = pcoa_2_bray,
+        fill = Substrate), size = 3.7, shape = 21) +
+    ggforce::geom_shape(data = df_hull_riffle_substrater_g, aes(x = pcoa_1_bray, y = pcoa_2_bray,
+    fill = Substrate, color = Substrate), radius = 0.03, expand = 0.028, alpha = 0.2) +
+    scale_fill_manual(name = "Substratum",
+            values = c("#1e8516", "#E9A264")) +
+    scale_color_manual(name = "Substratum",
+            values = c("#1e8516", "#E9A264")) +
+    scale_x_continuous(breaks = c(-0.50, -0.25, 0.00, 0.25, 0.50)) +
+    scale_y_continuous(breaks = c(-0.50, -0.25, 0.00, 0.25, 0.50)) +
+    annotate("text", x = -0.48, y = 0.47, label = "(g)", family = "Open Sans",
+            fontface = "bold", size = 4) +
+    annotate("text", x = 0.25, y = 0.47, label = "Grazer Presence", family = "Open Sans",
+             size = 4, color = "black") +
+    theme_bw() +
+    xlab("PCoA2") +
+    ylab("PCoA2") +
+    theme(axis.title = element_text(color = "black", size = 12, family = "Open Sans"),
+          axis.text.x = element_text(size = 10, family = "Open Sans"),
+          axis.text.y = element_text(size = 10, family = "Open Sans", angle = 90, hjust = .50)) +
+    coord_cartesian(xlim = c(-0.50, 0.50), ylim = c(-0.50, 0.50))
+
+grazer_absence <- d + e
+
+grazer_presence <- f + g
+
+grazer_absence / grazer_presence

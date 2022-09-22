@@ -14,6 +14,7 @@ df_diatom_f <- df_diatom %>%
 FQdiatom <- FuzzyQ::fuzzyq(df_diatom_f, sorting = TRUE)
 
 
+
 #Applies FuzzyQ to N bootstrap replicates
 #by site of the species abundance matrix
 BS.FQdiatom <- FuzzyQ::fuzzyqBoot(df_diatom_f, N = 4e2,

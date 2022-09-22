@@ -127,9 +127,9 @@ fig_S6_plot_grazer <- fig_S6_plot_b + fig_S6_plot_c
 
 fig_S6_plot_substrate <- fig_S6_plot_d + fig_S6_plot_e
 
-fig_S6_plot_a / fig_S6_plot_grazer / fig_S6_plot_substrate
+fig_S6_plot_a / fig_S6_plot_grazer / grazer_absence / grazer_presence
 
-ggplot::ggsave(here::here("Output","Figure_S6.png"),
+ggplot2::ggsave(here::here("Output","Figure_S6.png"),
     width = 7.08, height = 8.75, units = "in", dpi =1000)
 
 ## The end of the script##

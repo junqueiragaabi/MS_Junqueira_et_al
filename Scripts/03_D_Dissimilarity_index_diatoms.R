@@ -41,8 +41,11 @@ diatom_common_soren_f<- vegan::vegdist(diatom_common_hell_f, method = "bray", bi
 
 #####Rare species---------------------------
 
+df_rare <- df_rare_f %>%
+    dplyr::select(ACS1:last_col())
+
 #Hellinger transformation
-diatom_rare_hell_f <- labdsv::hellinger(diatom_comp_r_fuzzy)
+diatom_rare_hell_f <- labdsv::hellinger(df_rare)
 
 #Bray-Curtis index
 diatom_rare_bray_f <- vegan::vegdist(diatom_rare_hell_f, method = "bray")

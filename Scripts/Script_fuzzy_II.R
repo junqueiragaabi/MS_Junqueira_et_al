@@ -32,3 +32,8 @@ dbrda_VIV <- vegan::capscale(diatom_rare_soren_f ~ Mesohabitat * Grazer * Substr
             data = df_richness)
 
 anova(dbrda_VIV, by = "terms", permutations = perm_block)
+
+
+data(antsA)
+
+FQAnts <- fuzzyq(antsA, sorting = TRUE)
