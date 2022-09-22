@@ -26,7 +26,7 @@ diatom_total_hell <- labdsv::hellinger(diatom_comp_t)
 diatom_total_bray <- vegan::vegdist(diatom_total_hell, method = "bray")
 
 #Sorensen index
-diatom_total_soren <- vegan::vegdist(diatom_total_hell, method = "bray", binary = TRUE)
+diatom_total_soren <- vegan::vegdist(diatom_comp_t, method = "bray", binary = TRUE)
 
 #####Common species---------------------------
 
@@ -37,7 +37,7 @@ diatom_common_hell_f <- labdsv::hellinger(diatom_comp_c_fuzzy)
 diatom_common_bray_f <- vegan::vegdist(diatom_common_hell_f, method = "bray")
 
 #Sorensen index
-diatom_common_soren_f<- vegan::vegdist(diatom_common_hell_f, method = "bray", binary = TRUE)
+diatom_common_soren_f<- vegan::vegdist(diatom_comp_c_fuzzy, method = "bray", binary = TRUE)
 
 #####Rare species---------------------------
 
@@ -51,7 +51,7 @@ diatom_rare_hell_f <- labdsv::hellinger(df_rare)
 diatom_rare_bray_f <- vegan::vegdist(diatom_rare_hell_f, method = "bray")
 
 #Sorensen index
-diatom_rare_soren_f<- vegan::vegdist(diatom_rare_hell_f, method = "bray", binary = TRUE)
+diatom_rare_soren_f<- vegan::vegdist(diatom_comp_r_fuzzy, method = "bray", binary = TRUE)
 
 
 ##The end of the script##

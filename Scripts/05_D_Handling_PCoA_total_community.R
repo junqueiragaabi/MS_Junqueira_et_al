@@ -17,6 +17,7 @@ df_axis_pcoa_total <- cbind(df_factors,
             pcoa_2_soren = 10,
             pcoa_1_bray = 11,
             pcoa_2_bray = 12)
+            
 df_pool_total <- df_axis_pcoa_total %>%
     dplyr::filter(Mesohabitat == "Pool")
 

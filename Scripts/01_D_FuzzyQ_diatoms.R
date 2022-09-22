@@ -1,4 +1,4 @@
-## Script for FUzzyQ of diatoms
+## Script for FuzzyQ of diatoms
 ## Fuzzy Quantification of common and rare species
 ## in ecological communities (FuzzyQ)
 
@@ -17,6 +17,7 @@ FQdiatom <- FuzzyQ::fuzzyq(df_diatom_f, sorting = TRUE)
 
 #Applies FuzzyQ to N bootstrap replicates
 #by site of the species abundance matrix
+#N = 40 = experimental unit
 BS.FQdiatom <- FuzzyQ::fuzzyqBoot(df_diatom_f, N = 4e2,
             level = "spp")
 
