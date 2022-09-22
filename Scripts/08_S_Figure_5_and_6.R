@@ -1,8 +1,8 @@
 ## Script for Figure 5 and
 ## Figure 6
 
-df_waffle <- df_five_common %>%
-    dplyr::pivot_longer(
+df_waffle <- df_six_common %>%
+    tidyr::pivot_longer(
         cols = c(ADMI:Others),
         names_to = "species",
         values_to = "abundance"
