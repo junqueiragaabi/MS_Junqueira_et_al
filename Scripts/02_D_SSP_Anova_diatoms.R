@@ -12,7 +12,7 @@ sp_total <- aov(df_diatom$Richness_T ~df_diatom$Mesohabitat*df_diatom$Grazer*df_
         data = df_diatom)
 
 summary(sp_total)
-
+8
 #Assumptions
 sp_total_assum <- aov(df_diatom$Richness_T ~df_diatom$Mesohabitat*df_diatom$Grazer*df_diatom$Substrate,
                  data = df_diatom)
@@ -29,6 +29,7 @@ plot(sp_total_assum, 1)
 sp_common <- aov(df_diatom$Richness_C_Fuzzy_I ~df_diatom$Mesohabitat*df_diatom$Grazer*df_diatom$Substrate +
         Error(as.factor(df_diatom$Block)/df_diatom$Grazer),
         data = df_diatom)
+
 
 summary(sp_common)
 

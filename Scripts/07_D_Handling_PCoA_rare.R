@@ -48,12 +48,18 @@ df_hull_pool_grazer_br <- df_axis_pcoa_rare %>%
     dplyr::slice(c(chull(pcoa_1_bray, pcoa_2_bray),
             chull(pcoa_1_bray, pcoa_2_bray)[1]))
 
+## Substrate level
+
 df_hull_riffle_substrate_d <- df_axis_pcoa_rare %>%
     dplyr::filter(Mesohabitat == "Riffle") %>%
     dplyr::filter(Grazer == "Absence") %>%
     dplyr::group_by(Substrate) %>%
     dplyr::slice(c(chull(pcoa_1_bray, pcoa_2_bray),
             chull(pcoa_1_bray, pcoa_2_bray)[1]))
+
+df_gray_riffle_substrate_d <- df_axis_pcoa_rare %>%
+    dplyr::filter(Mesohabitat == "Riffle") %>%
+    dplyr::filter(Grazer == "Presence")
 
 df_hull_riffle_substrate_f <- df_axis_pcoa_rare %>%
     dplyr::filter(Mesohabitat == "Riffle") %>%
@@ -62,61 +68,30 @@ df_hull_riffle_substrate_f <- df_axis_pcoa_rare %>%
     dplyr::slice(c(chull(pcoa_1_bray, pcoa_2_bray),
             chull(pcoa_1_bray, pcoa_2_bray)[1]))
 
-df_hull_riffle_substrate_e <- df_axis_pcoa_rare %>%
+df_gray_riffle_substrate_f <- df_axis_pcoa_rare %>%
+    dplyr::filter(Mesohabitat == "Riffle") %>%
+    dplyr::filter(Grazer == "Absence")
+
+df_hull_pool_substrate_e <- df_axis_pcoa_rare %>%
     dplyr::filter(Mesohabitat == "Pool") %>%
     dplyr::filter(Grazer == "Absence") %>%
     dplyr::group_by(Substrate) %>%
     dplyr::slice(c(chull(pcoa_1_bray, pcoa_2_bray),
             chull(pcoa_1_bray, pcoa_2_bray)[1]))
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-df_hull_riffle_substrate_sr <- df_axis_pcoa_rare %>%
-    dplyr::filter(Mesohabitat == "Riffle") %>%
-    dplyr::group_by(Substrate) %>%
-    dplyr::slice(c(chull(pcoa_1_soren, pcoa_2_soren),
-            chull(pcoa_1_soren, pcoa_2_soren)[1]))
-
-df_hull_pool_substrate_sr <- df_axis_pcoa_rare %>%
+df_gray_pool_substrate_e <- df_axis_pcoa_rare %>%
     dplyr::filter(Mesohabitat == "Pool") %>%
-    dplyr::group_by(Substrate) %>%
-    dplyr::slice(c(chull(pcoa_1_soren, pcoa_2_soren),
-            chull(pcoa_1_soren, pcoa_2_soren)[1]))
+    dplyr::filter(Grazer == "Presence")
 
-df_hull_riffle_substrate_br <- df_axis_pcoa_rare %>%
-    dplyr::filter(Mesohabitat == "Riffle") %>%
+df_hull_pool_substrate_g <- df_axis_pcoa_rare %>%
+    dplyr::filter(Mesohabitat == "Pool") %>%
+    dplyr::filter(Grazer == "Presence") %>%
     dplyr::group_by(Substrate) %>%
     dplyr::slice(c(chull(pcoa_1_bray, pcoa_2_bray),
             chull(pcoa_1_bray, pcoa_2_bray)[1]))
 
-df_hull_pool_substrate_br <- df_axis_pcoa_rare %>%
+df_gray_pool_substrate_g <- df_axis_pcoa_rare %>%
     dplyr::filter(Mesohabitat == "Pool") %>%
-    dplyr::group_by(Substrate) %>%
-    dplyr::slice(c(chull(pcoa_1_bray,pcoa_2_bray),
-            chull(pcoa_1_bray,pcoa_2_bray)[1]))
+    dplyr::filter(Grazer == "Absence")
 
-## The end of the script##
+# The end of the script##

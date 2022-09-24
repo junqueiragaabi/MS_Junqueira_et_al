@@ -34,7 +34,7 @@ plot_meso_substrate <- ggplot(df_meso_sub, aes(fill = species, values = abundanc
   theme_minimal() +
   theme(legend.text = ggtext::element_markdown(size = 10, family = "Open Sans"))
 
-ggplot::ggsave(here::here("Output", "Figure_5.svg"),
+ggplot2::ggsave(here::here("Output", "Figure_5.jpeg"),
     dpi = 1000, width = 7.08, height = 5.75, units = "in")
 
 df_meso_grazer <- df_waffle %>%
@@ -63,5 +63,5 @@ plot_meso_grazer <- ggplot(df_meso_grazer, aes(fill = species, values = abundanc
   theme_minimal() +
   theme(legend.text = ggtext::element_markdown(size = 10, family = "Open Sans"))
 
-ggplot2::ggsave(here::here("Output", "Figure_6.svg"),
+ggplot2::ggsave(here::here("Output", "Figure_6.jpeg"),
      dpi = 1000, width = 7.08, height = 5.75, units = "in")

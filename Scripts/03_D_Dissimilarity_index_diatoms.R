@@ -6,7 +6,7 @@
 ##Preparing data set--------------------
 
 ##Community total
-diatom_comp_t <- df_richness %>%
+diatom_comp_t <- df_diatom %>%
             dplyr::select(-c(Block:Richness_R_Fuzzy_II))
 
 ##common species

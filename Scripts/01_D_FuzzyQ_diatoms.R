@@ -14,6 +14,9 @@ df_diatom_f <- df_diatom %>%
 FQdiatom <- FuzzyQ::fuzzyq(df_diatom_f, sorting = TRUE)
 
 
+Fq_diatom <- as.data.frame(FQdiatom$A_O)
+
+View(Fq_diatom)
 
 #Applies FuzzyQ to N bootstrap replicates
 #by site of the species abundance matrix
@@ -36,19 +39,21 @@ png(here::here("Output", "Figure_S1.png"),
     units = "in", res = 1200)
 
 #Plot_1----------------------------------
-FuzzyQ::AOplot(FQdiatom, col.RC, pch = 16)
+
+ggplotify::as.ggplot(~FuzzyQ::AOplot(FQdiatom, col.RC, pch = 16)) +
+    annotate("text", x = 0, y = 250, label = "(a)", fontface = "bold", size = 7,family = "Lato")
 
 dev.off() #the end of plot 1
+
 
 spp <- FQdiatom$spp
 
 #Plot_2----------------------------------
-barplot(spp[,2], names.arg = rownames(spp),
-        col = col.RC[spp[, 1] + 1],
+plot_a <- ggplotify::as.ggplot(~barplot(spp[,2],col = col.RC[spp[, 1] + 1],
         las = 2, cex.names = 0.6,
         xlab = "Species", ylab = "Silhouette width",
-        cex.axis = 0.8)
-legend(0, -0.1, c("Rare", "Common"), col = col.RC, pch = 15, cex = 0.8)
+        cex.axis = 0.8)) +
+    annotate("text", x = 0.090, y = 0.90, label = "(a)", fontface = "bold", size = 4)
 
 #for save the plot_3 --------------------
 png(here::here("Output", "Figure_S2.png"),
@@ -64,7 +69,7 @@ ebar_int <- seq_len(nrow(spp)) # use arrows function to draw CIs:
 arrows(ebar_int, BS.FQdiatom["Lower", ], ebar_int, BS.FQdiatom["Upper", ],
        length = 0, col = col.RC[spp[, 1] + 1])
 abline(h = 0.5, col = "orange3", xpd = FALSE)
-axis(1, at = ebar_int, labels = rownames(spp), las = 2, cex.axis = 0.6)
+axis(1, at = ebar_int, las = 2, cex.axis = 0.6)
 
 dev.off() #the end of plot 3
 

@@ -73,8 +73,12 @@ fig_S6_plot_d <- ggplot() +
         shape = 21, fill = "#ececec") + 
     geom_point(data = df_riffle_rare,aes(x = pcoa_1_bray, y = pcoa_2_bray,
         fill = Substrate), size = 3.7, shape = 21) +
-    ggforce::geom_shape(data = df_hull_riffle_substrate_br, aes(x = pcoa_1_bray, y = pcoa_2_bray,
+    ggforce::geom_shape(data = df_hull_riffle_substrate_d, aes(x = pcoa_1_bray, y = pcoa_2_bray,
     fill = Substrate, color = Substrate), radius = 0.03, expand = 0.028, alpha = 0.2) +
+    geom_point(data = df_gray_riffle_substrate_d, aes(x = pcoa_1_bray, y = pcoa_2_bray), size = 3.7,
+        shape = 21, fill = "#ececec") +
+    ggforce::geom_shape(data = df_hull_riffle_substrate_d, aes(x = pcoa_1_bray, y = pcoa_2_bray,
+    fill = Substrate, color = Substrate), radius = 0.03, expand = 0.028, alpha = 0.1) +
     scale_fill_manual(name = "Substratum",
             values = c("#1e8516", "#E9A264"), guide = "none") +
     scale_color_manual(name = "Substratum",
@@ -83,7 +87,7 @@ fig_S6_plot_d <- ggplot() +
     scale_y_continuous(breaks = c(-0.50, -0.25, 0.00, 0.25, 0.50)) +
     annotate("text", x = -0.48, y = 0.47, label = "(d)", family = "Open Sans",
             fontface = "bold", size = 4) +
-    annotate("text", x = 0.25, y = 0.47, label = "Grazer Absence", family = "Open Sans",
+    annotate("text", x = 0.12, y = 0.47, label = "Riffle - Grazer Absence", family = "Open Sans",
              size = 4, color = "black") +
     theme_bw() +
     xlab("PCoA2") +
@@ -99,8 +103,12 @@ fig_S6_plot_e <- ggplot() +
         shape = 21, fill = "#ececec") + 
     geom_point(data = df_pool_rare,aes(x = pcoa_1_bray, y = pcoa_2_bray,
         fill = Substrate), size = 3.7, shape = 21) +
-    ggforce::geom_shape(data = df_hull_riffle_substrate_d, aes(x = pcoa_1_bray, y = pcoa_2_bray,
+    ggforce::geom_shape(data = df_hull_pool_substrate_e, aes(x = pcoa_1_bray, y = pcoa_2_bray,
     fill = Substrate, color = Substrate), radius = 0.03, expand = 0.028, alpha = 0.2) +
+    geom_point(data = df_gray_pool_substrate_e, aes(x = pcoa_1_bray, y = pcoa_2_bray), size = 3.7,
+        shape = 21, fill = "#ececec") +
+    ggforce::geom_shape(data = df_hull_pool_substrate_e, aes(x = pcoa_1_bray, y = pcoa_2_bray,
+    fill = Substrate, color = Substrate), radius = 0.03, expand = 0.028, alpha = 0.1) +
     scale_fill_manual(name = "Substratum",
             values = c("#1e8516", "#E9A264")) +
     scale_color_manual(name = "Substratum",
@@ -109,7 +117,7 @@ fig_S6_plot_e <- ggplot() +
     scale_y_continuous(breaks = c(-0.50, -0.25, 0.00, 0.25, 0.50)) +
     annotate("text", x = -0.48, y = 0.47, label = "(e)", family = "Open Sans",
             fontface = "bold", size = 4) +
-    annotate("text", x = 0.25, y = 0.47, label = "Grazer Absence", family = "Open Sans",
+    annotate("text", x = 0.12, y = 0.47, label = "Pool - Grazer Absence", family = "Open Sans",
              size = 4, color = "black") +
     theme_bw() +
     xlab("PCoA2") +
@@ -124,8 +132,12 @@ fig_S6_plot_f <- ggplot() +
         shape = 21, fill = "#ececec") + 
     geom_point(data = df_riffle_rare,aes(x = pcoa_1_bray, y = pcoa_2_bray,
         fill = Substrate), size = 3.7, shape = 21) +
-    ggforce::geom_shape(data = df_hull_riffle_substrate_br_b, aes(x = pcoa_1_bray, y = pcoa_2_bray,
+    ggforce::geom_shape(data = df_hull_riffle_substrate_f, aes(x = pcoa_1_bray, y = pcoa_2_bray,
     fill = Substrate, color = Substrate), radius = 0.03, expand = 0.028, alpha = 0.2) +
+    geom_point(data = df_gray_riffle_substrate_f, aes(x = pcoa_1_bray, y = pcoa_2_bray), size = 3.7,
+        shape = 21, fill = "#ececec") +
+    ggforce::geom_shape(data = df_hull_riffle_substrate_f, aes(x = pcoa_1_bray, y = pcoa_2_bray,
+    fill = Substrate, color = Substrate), radius = 0.03, expand = 0.028, alpha = 0.1) +
     scale_fill_manual(name = "Substratum",
             values = c("#1e8516", "#E9A264"), guide = "none") +
     scale_color_manual(name = "Substratum",
@@ -134,7 +146,7 @@ fig_S6_plot_f <- ggplot() +
     scale_y_continuous(breaks = c(-0.50, -0.25, 0.00, 0.25, 0.50)) +
     annotate("text", x = -0.48, y = 0.47, label = "(f)", family = "Open Sans",
             fontface = "bold", size = 4) +
-    annotate("text", x = 0.25, y = 0.47, label = "Grazer Presence", family = "Open Sans",
+    annotate("text", x = 0.12, y = 0.47, label = "Riffle - Grazer Presence", family = "Open Sans",
              size = 4, color = "black") +
     theme_bw() +
     xlab("PCoA2") +
@@ -144,13 +156,17 @@ fig_S6_plot_f <- ggplot() +
           axis.text.y = element_text(size = 10, family = "Open Sans", angle = 90, hjust = .50)) +
     coord_cartesian(xlim = c(-0.50, 0.50), ylim = c(-0.50, 0.50))
 
-fig_S6_plot_g <- ggplot() +
+fig_S6_plot_g  <- ggplot() +
     geom_point(data = df_riffle_rare, aes(x = pcoa_1_bray, y = pcoa_2_bray), size = 3.7,
-        shape = 21, fill = "#ececec") + 
+        shape = 21, fill = "#ececec") +
     geom_point(data = df_pool_rare,aes(x = pcoa_1_bray, y = pcoa_2_bray,
         fill = Substrate), size = 3.7, shape = 21) +
-    ggforce::geom_shape(data = df_hull_riffle_substrater_g, aes(x = pcoa_1_bray, y = pcoa_2_bray,
+    ggforce::geom_shape(data = df_hull_pool_substrate_g, aes(x = pcoa_1_bray, y = pcoa_2_bray,
     fill = Substrate, color = Substrate), radius = 0.03, expand = 0.028, alpha = 0.2) +
+    geom_point(data = df_gray_pool_substrate_g, aes(x = pcoa_1_bray, y = pcoa_2_bray), size = 3.7,
+        shape = 21, fill = "#ececec") +
+    ggforce::geom_shape(data = df_hull_pool_substrate_g, aes(x = pcoa_1_bray, y = pcoa_2_bray,
+    fill = Substrate, color = Substrate), radius = 0.03, expand = 0.028, alpha = 0.1) +
     scale_fill_manual(name = "Substratum",
             values = c("#1e8516", "#E9A264")) +
     scale_color_manual(name = "Substratum",
@@ -159,7 +175,7 @@ fig_S6_plot_g <- ggplot() +
     scale_y_continuous(breaks = c(-0.50, -0.25, 0.00, 0.25, 0.50)) +
     annotate("text", x = -0.48, y = 0.47, label = "(g)", family = "Open Sans",
             fontface = "bold", size = 4) +
-    annotate("text", x = 0.25, y = 0.47, label = "Grazer Presence", family = "Open Sans",
+    annotate("text", x = 0.12, y = 0.47, label = "Pool - Grazer Presence", family = "Open Sans",
              size = 4, color = "black") +
     theme_bw() +
     xlab("PCoA2") +
@@ -179,6 +195,6 @@ grazer_presence <- fig_S6_plot_f + fig_S6_plot_g
 fig_S6_plot_a / fig_S6_plot_grazer / grazer_absence / grazer_presence
 
 ggplot2::ggsave(here::here("Output","Figure_S6.png"),
-    width = 7.08, height = 8.75, units = "in", dpi =1000)
+    width = 7.08, height = 9.75, units = "in", dpi =1000)
 
 ## The end of the script##
