@@ -33,34 +33,26 @@ BS.FQdiatom <- FuzzyQ::sortClus(BS.FQdiatom, FQdiatom)
 
 col.RC <- c("brown2", "turquoise3")
 
-#for save the plot_1 --------------------
-png(here::here("Output", "Figure_S1.png"),
-    width = 7.08, height = 7.08,
-    units = "in", res = 1200)
-
 #Plot_1----------------------------------
 
-ggplotify::as.ggplot(~FuzzyQ::AOplot(FQdiatom, col.RC, pch = 16)) +
-    annotate("text", x = 0, y = 250, label = "(a)", fontface = "bold", size = 7,family = "Lato")
-
-dev.off() #the end of plot 1
-
-
-spp <- FQdiatom$spp
+FuzzyQ::AOplot(FQdiatom, col.RC, pch = 16)
 
 #Plot_2----------------------------------
-plot_a <- ggplotify::as.ggplot(~barplot(spp[,2],col = col.RC[spp[, 1] + 1],
-        las = 2, cex.names = 0.6,
-        xlab = "Species", ylab = "Silhouette width",
-        cex.axis = 0.8)) +
-    annotate("text", x = 0.090, y = 0.90, label = "(a)", fontface = "bold", size = 4)
+spp <- FQdiatom$spp
 
-#for save the plot_3 --------------------
 png(here::here("Output", "Figure_S2.png"),
-    width = 7.08, height = 7.08,
+    width = 7.08, height = 8.75,
     units = "in", res = 1200)
 
-#Plot_3----------------------------------
+par(mfrow=c(2,1))
+
+barplot(spp[,2],
+        col = col.RC[spp[, 1] + 1],
+        las = 2, cex.names = 0.6,
+        xlab = "Species", ylab = "Silhouette width",
+        cex.axis = 0.8)
+text(x = 0.090, y = 0.80, label = "(a)", font = 2)
+
 plot(spp[, 3], cex.axis = 0.8, xaxt = "n", ylab = "Commoness index",
      ylim = c(0, max(BS.FQdiatom)), xlab = "Species",
      col = col.RC[spp[, 1] + 1], # nolint
@@ -69,7 +61,7 @@ ebar_int <- seq_len(nrow(spp)) # use arrows function to draw CIs:
 arrows(ebar_int, BS.FQdiatom["Lower", ], ebar_int, BS.FQdiatom["Upper", ],
        length = 0, col = col.RC[spp[, 1] + 1])
 abline(h = 0.5, col = "orange3", xpd = FALSE)
-axis(1, at = ebar_int, las = 2, cex.axis = 0.6)
+text(x = 1, y = 0.90, label = "(b)", font = 2)
 
 dev.off() #the end of plot 3
 
