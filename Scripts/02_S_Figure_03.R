@@ -4,7 +4,7 @@
 
 plot_a <- ggplot(df_axis_pcoa_total,aes(x = pcoa_1_soren, y = pcoa_2_soren,
         fill = Mesohabitat)) +
-    geom_point(shape = 21, size = 3.7, alpha = 1) + 
+    geom_point(shape = 21, size = 3.7, alpha = 1) +
     theme_bw() +
     xlab("PCoA1") +
     ylab("PCoA2") +
@@ -26,11 +26,9 @@ plot_a <- ggplot(df_axis_pcoa_total,aes(x = pcoa_1_soren, y = pcoa_2_soren,
 #plotb
 plot_b <- ggplot() +
     geom_point(data = df_pool_total, aes(x = pcoa_1_soren, y = pcoa_2_soren), size = 3.7,
-        shape = 21, fill = "#ececec") + 
+        shape = 21, fill = "#ececec") +
     geom_point(data = df_riffle_total,aes(x = pcoa_1_soren, y = pcoa_2_soren,
         fill = Grazer), size = 3.7, shape = 21) +
-    ggforce::geom_shape(data = df_hull_riffle_grazer_st, aes(x = pcoa_1_soren, y = pcoa_2_soren,
-    fill = Grazer, color = Grazer), radius = 0.03, expand = 0.028, alpha = 0.2) +
     scale_fill_manual(values = c("#b44739", "#4c9095"), guide = "none") +
     scale_color_manual(values = c("#b44739", "#4c9095"), guide = "none") +
     scale_x_continuous(breaks = c(-0.41, -0.21, 0.00, 0.21, 0.41)) +
@@ -50,11 +48,9 @@ plot_b <- ggplot() +
 #plotc
 plot_c <- ggplot() +
     geom_point(data = df_riffle_total, aes(x = pcoa_1_soren, y = pcoa_2_soren), size = 3.7,
-        shape = 21, fill = "#ececec") + 
+        shape = 21, fill = "#ececec") +
     geom_point(data = df_pool_total,aes(x = pcoa_1_soren, y = pcoa_2_soren,
         fill = Grazer), size = 3.7, shape = 21) +
-    ggforce::geom_shape(data = df_hull_pool_grazer_st, aes(x = pcoa_1_soren, y = pcoa_2_soren,
-    fill = Grazer, color = Grazer), radius = 0.03, expand = 0.028, alpha = 0.2) +
     scale_fill_manual(values = c("#b44739", "#4c9095")) +
     scale_color_manual(values = c("#b44739", "#4c9095")) +
     scale_x_continuous(breaks = c(-0.41, -0.21, 0.00, 0.21, 0.41)) +
@@ -75,11 +71,9 @@ plot_c <- ggplot() +
 #plot_d
 plot_d <- ggplot() +
     geom_point(data = df_pool_total, aes(x = pcoa_1_soren, y = pcoa_2_soren), size = 3.7,
-        shape = 21, fill = "#ececec") + 
+        shape = 21, fill = "#ececec") +
     geom_point(data = df_riffle_total,aes(x = pcoa_1_soren, y = pcoa_2_soren,
         fill = Substrate), size = 3.7, shape = 21) +
-    ggforce::geom_shape(data = df_hull_riffle_substrate_st, aes(x = pcoa_1_soren, y = pcoa_2_soren,
-    fill = Substrate, color = Substrate), radius = 0.03, expand = 0.028, alpha = 0.2) +
     scale_fill_manual(name = "Substratum",
             values = c("#1e8516", "#E9A264"), guide = "none") +
     scale_color_manual(name = "Substratum",
@@ -101,11 +95,9 @@ plot_d <- ggplot() +
 #plote
 plot_e <- ggplot() +
     geom_point(data = df_riffle_total, aes(x = pcoa_1_soren, y = pcoa_2_soren), size = 3.7,
-        shape = 21, fill = "#ececec") + 
+        shape = 21, fill = "#ececec") +
     geom_point(data = df_pool_total,aes(x = pcoa_1_soren, y = pcoa_2_soren,
         fill = Substrate), size = 3.7, shape = 21) +
-    ggforce::geom_shape(data = df_hull_pool_substrate_st, aes(x = pcoa_1_soren, y = pcoa_2_soren,
-    fill = Substrate, color = Substrate), radius = 0.03, expand = 0.028, alpha = 0.2) +
     scale_fill_manual(name = "Substratum",
             values = c("#1e8516", "#E9A264")) +
     scale_color_manual(name = "Substratum",
