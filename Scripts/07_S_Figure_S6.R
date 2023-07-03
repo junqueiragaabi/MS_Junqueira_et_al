@@ -4,7 +4,7 @@
 
 fig_S6_plot_a <- ggplot(df_axis_pcoa_rare,aes(x = pcoa_1_bray, y = pcoa_2_bray,
         fill = Mesohabitat)) +
-    geom_point(shape = 21, size = 3.7, alpha = 1) + 
+    geom_point(shape = 21, size = 3.7, alpha = 1) +
     theme_bw() +
     xlab("PCoA1") +
     ylab("PCoA2") +
@@ -24,11 +24,9 @@ fig_S6_plot_a <- ggplot(df_axis_pcoa_rare,aes(x = pcoa_1_bray, y = pcoa_2_bray,
 
 fig_S6_plot_b <- ggplot() +
     geom_point(data = df_pool_rare, aes(x = pcoa_1_bray, y = pcoa_2_bray), size = 3.7,
-        shape = 21, fill = "#ececec") + 
+        shape = 21, fill = "#ececec") +
     geom_point(data = df_riffle_rare,aes(x = pcoa_1_bray, y = pcoa_2_bray,
         fill = Grazer), size = 3.7, shape = 21) +
-    ggforce::geom_shape(data = df_hull_riffle_grazer_br, aes(x = pcoa_1_bray, y = pcoa_2_bray,
-    fill = Grazer, color = Grazer), radius = 0.03, expand = 0.028, alpha = 0.2) +
     scale_fill_manual(values = c("#b44739", "#4c9095"), guide = "none") +
     scale_color_manual(values = c("#b44739", "#4c9095"), guide = "none") +
     scale_x_continuous(breaks = c(-0.50, -0.25, 0.00, 0.25, 0.50)) +
@@ -47,11 +45,9 @@ fig_S6_plot_b <- ggplot() +
 
 fig_S6_plot_c <- ggplot() +
     geom_point(data = df_riffle_rare, aes(x = pcoa_1_bray, y = pcoa_2_bray), size = 3.7,
-        shape = 21, fill = "#ececec") + 
+        shape = 21, fill = "#ececec") +
     geom_point(data = df_pool_rare,aes(x = pcoa_1_bray, y = pcoa_2_bray,
         fill = Grazer), size = 3.7, shape = 21) +
-    ggforce::geom_shape(data = df_hull_pool_grazer_br, aes(x = pcoa_1_bray, y = pcoa_2_bray,
-    fill = Grazer, color = Grazer), radius = 0.03, expand = 0.028, alpha = 0.2) +
     scale_fill_manual(values = c("#b44739", "#4c9095")) +
     scale_color_manual(values = c("#b44739", "#4c9095")) +
     scale_x_continuous(breaks = c(-0.50, -0.25, 0.00, 0.25, 0.50)) +
@@ -70,15 +66,11 @@ fig_S6_plot_c <- ggplot() +
 
 fig_S6_plot_d <- ggplot() +
     geom_point(data = df_pool_rare, aes(x = pcoa_1_bray, y = pcoa_2_bray), size = 3.7,
-        shape = 21, fill = "#ececec") + 
+        shape = 21, fill = "#ececec") +
     geom_point(data = df_riffle_rare,aes(x = pcoa_1_bray, y = pcoa_2_bray,
         fill = Substrate), size = 3.7, shape = 21) +
-    ggforce::geom_shape(data = df_hull_riffle_substrate_d, aes(x = pcoa_1_bray, y = pcoa_2_bray,
-    fill = Substrate, color = Substrate), radius = 0.03, expand = 0.028, alpha = 0.2) +
     geom_point(data = df_gray_riffle_substrate_d, aes(x = pcoa_1_bray, y = pcoa_2_bray), size = 3.7,
         shape = 21, fill = "#ececec") +
-    ggforce::geom_shape(data = df_hull_riffle_substrate_d, aes(x = pcoa_1_bray, y = pcoa_2_bray,
-    fill = Substrate, color = Substrate), radius = 0.03, expand = 0.028, alpha = 0.1) +
     scale_fill_manual(name = "Substratum",
             values = c("#1e8516", "#E9A264"), guide = "none") +
     scale_color_manual(name = "Substratum",
@@ -100,15 +92,11 @@ fig_S6_plot_d <- ggplot() +
 
 fig_S6_plot_e <- ggplot() +
     geom_point(data = df_riffle_rare, aes(x = pcoa_1_bray, y = pcoa_2_bray), size = 3.7,
-        shape = 21, fill = "#ececec") + 
+        shape = 21, fill = "#ececec") +
     geom_point(data = df_pool_rare,aes(x = pcoa_1_bray, y = pcoa_2_bray,
         fill = Substrate), size = 3.7, shape = 21) +
-    ggforce::geom_shape(data = df_hull_pool_substrate_e, aes(x = pcoa_1_bray, y = pcoa_2_bray,
-    fill = Substrate, color = Substrate), radius = 0.03, expand = 0.028, alpha = 0.2) +
     geom_point(data = df_gray_pool_substrate_e, aes(x = pcoa_1_bray, y = pcoa_2_bray), size = 3.7,
         shape = 21, fill = "#ececec") +
-    ggforce::geom_shape(data = df_hull_pool_substrate_e, aes(x = pcoa_1_bray, y = pcoa_2_bray,
-    fill = Substrate, color = Substrate), radius = 0.03, expand = 0.028, alpha = 0.1) +
     scale_fill_manual(name = "Substratum",
             values = c("#1e8516", "#E9A264")) +
     scale_color_manual(name = "Substratum",
@@ -129,15 +117,11 @@ fig_S6_plot_e <- ggplot() +
 
 fig_S6_plot_f <- ggplot() +
     geom_point(data = df_pool_rare, aes(x = pcoa_1_bray, y = pcoa_2_bray), size = 3.7,
-        shape = 21, fill = "#ececec") + 
+        shape = 21, fill = "#ececec") +
     geom_point(data = df_riffle_rare,aes(x = pcoa_1_bray, y = pcoa_2_bray,
         fill = Substrate), size = 3.7, shape = 21) +
-    ggforce::geom_shape(data = df_hull_riffle_substrate_f, aes(x = pcoa_1_bray, y = pcoa_2_bray,
-    fill = Substrate, color = Substrate), radius = 0.03, expand = 0.028, alpha = 0.2) +
     geom_point(data = df_gray_riffle_substrate_f, aes(x = pcoa_1_bray, y = pcoa_2_bray), size = 3.7,
         shape = 21, fill = "#ececec") +
-    ggforce::geom_shape(data = df_hull_riffle_substrate_f, aes(x = pcoa_1_bray, y = pcoa_2_bray,
-    fill = Substrate, color = Substrate), radius = 0.03, expand = 0.028, alpha = 0.1) +
     scale_fill_manual(name = "Substratum",
             values = c("#1e8516", "#E9A264"), guide = "none") +
     scale_color_manual(name = "Substratum",
@@ -161,12 +145,8 @@ fig_S6_plot_g  <- ggplot() +
         shape = 21, fill = "#ececec") +
     geom_point(data = df_pool_rare,aes(x = pcoa_1_bray, y = pcoa_2_bray,
         fill = Substrate), size = 3.7, shape = 21) +
-    ggforce::geom_shape(data = df_hull_pool_substrate_g, aes(x = pcoa_1_bray, y = pcoa_2_bray,
-    fill = Substrate, color = Substrate), radius = 0.03, expand = 0.028, alpha = 0.2) +
     geom_point(data = df_gray_pool_substrate_g, aes(x = pcoa_1_bray, y = pcoa_2_bray), size = 3.7,
         shape = 21, fill = "#ececec") +
-    ggforce::geom_shape(data = df_hull_pool_substrate_g, aes(x = pcoa_1_bray, y = pcoa_2_bray,
-    fill = Substrate, color = Substrate), radius = 0.03, expand = 0.028, alpha = 0.1) +
     scale_fill_manual(name = "Substratum",
             values = c("#1e8516", "#E9A264")) +
     scale_color_manual(name = "Substratum",
